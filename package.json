@@ -1,12 +1,18 @@
 {
   "name": "starter-template-mcp-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server:build": "tsc",
+    "server:build:watch": "tsc --watch",
+    "server:dev": "tsx src/server.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "sthiven-melo",
   "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
 }
