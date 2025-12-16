@@ -1,7 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { userSchema } from "./@core/use-cases/users/user.dto";
 import { createUser } from "./@core/use-cases/users/create-users";
+import { userSchema } from "./@core/schema/users/user.dto";
 
 const server = new McpServer({
   name: "starter-template-mcp-server",

@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { userSchema, userSchemaDTO } from "./user.dto";
+import { userSchema, userSchemaDTO } from "../../schema/users/user.dto";
 
 interface User extends userSchemaDTO {
   id: number;
