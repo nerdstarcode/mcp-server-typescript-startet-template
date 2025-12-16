@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Jhonson",
+    "email": "alice@test.com",
+    "address": "123 Maple St, Springfield, IL",
+    "phone": "55-2344"
+  },
+  {
+    "id": 2,
+    "name": "Bob Martinez",
+    "email": "bob.martinez@test.com",
+    "address": "456 Oak Ave, Austin, TX",
+    "phone": "55-8765"
+  },
+  {
+    "id": 3,
+    "name": "Carla Mendes",
+    "email": "carla.mendes@test.com",
+    "address": "789 Pine Rd, Miami, FL",
+    "phone": "55-1122"
+  },
+  {
+    "id": 4,
+    "name": "Daniel Oliveira",
+    "email": "daniel.oliveira@test.com",
+    "address": "321 Cedar St, Denver, CO",
+    "phone": "55-3344"
+  },
+  {
+    "id": 5,
+    "name": "Fernanda Silva",
+    "email": "fernanda.silva@test.com",
+    "address": "654 Birch Blvd, Seattle, WA",
+    "phone": "55-9988"
+  }
+]
