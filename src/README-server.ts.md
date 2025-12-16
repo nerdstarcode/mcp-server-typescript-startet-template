@@ -78,8 +78,8 @@ server.registerTool(
 
 As `annotations` ajudam o cliente MCP a entender o comportamento da tool:
 
-* `readOnlyHint`: `false` → a tool altera estado.
-* `destructiveHint`: `false` → não remove dados.
+* `readOnlyHint`: `false` → a tool só lê dados sem sobreescrever.
+* `destructiveHint`: `false` → remove dados.
 * `idempotentHint`: `false` → múltiplas execuções podem gerar efeitos diferentes.
 * `openWorldHint`: `true` → aceita dados externos e dinâmicos.
 
