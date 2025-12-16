@@ -26,12 +26,5 @@
     "email": "daniel.oliveira@test.com",
     "address": "321 Cedar St, Denver, CO",
     "phone": "55-3344"
-  },
-  {
-    "id": 5,
-    "name": "Fernanda Silva",
-    "email": "fernanda.silva@test.com",
-    "address": "654 Birch Blvd, Seattle, WA",
-    "phone": "55-9988"
   }
 ]
