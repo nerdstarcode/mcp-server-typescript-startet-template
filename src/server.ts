@@ -1,7 +1,9 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { createUser } from "./@core/use-cases/users/create-users";
-import { userSchema } from "./@core/schema/users/users.dto";
+import { deleteUserSchema, editUserSchema, userSchema } from "./@core/schema/users/users.dto";
+import { editUser } from "./@core/use-cases/users/edit-users";
+import { deleteUser } from "./@core/use-cases/users/delete-users";
 
 const server = new McpServer({
   name: "starter-template-mcp-server",
@@ -52,6 +54,56 @@ server.registerTool(
       console.groupEnd()
     }
   },
+);
+
+server.registerTool(
+  "edit-user",
+  {
+    description: "Edit an existing user",
+    inputSchema: editUserSchema,
+    annotations: {
+      title: "Edit User",
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: false,
+      openWorldHint: true
+    }
+  },
+  async (payload) => {
+    try {
+      const updated = await editUser(payload);
+      return {
+        content: [
+          { type: "text", text: `User ${updated.id} updated successfully` }
+        ]
+      };
+    } catch (err) {
+      return { content: [{ type: "text", text: `Failed to update user: ${String(err)}` }] };
+    }
+  }
+);
+
+server.registerTool(
+  "delete-user",
+  {
+    description: "Delete a user by id",
+    inputSchema: deleteUserSchema,
+    annotations: {
+      title: "Delete User",
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: false,
+      openWorldHint: true
+    }
+  },
+  async (payload) => {
+    try {
+      const res = await deleteUser(payload);
+      return { content: [{ type: "text", text: `User ${res.id} deleted successfully` }] };
+    } catch (err) {
+      return { content: [{ type: "text", text: `Failed to delete user: ${String(err)}` }] };
+    }
+  }
 );
 
 (async function main() {
