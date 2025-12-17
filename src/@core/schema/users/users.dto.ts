@@ -1,8 +1,8 @@
-import { z } from "zod/mini";
+import { z } from "zod";
 
 export const userSchema = z.object({
   name: z.string(),
-  email: z.string(),
+  email: z.email(),
   address: z.string(),
   phone: z.string(),
 })
@@ -10,10 +10,10 @@ export type userSchemaDTO = z.infer<typeof userSchema>;
 
 export const editUserSchema = z.object({
   id: z.number(),
-  name: z.union([z.string(), z.undefined()]),
-  email: z.union([z.email(), z.undefined()]),
-  address: z.union([z.string(), z.undefined()]),
-  phone: z.union([z.string(), z.undefined()]),
+  name: z.string().optional,
+  email: z.email().optional,
+  address: z.string().optional,
+  phone: z.string().optional,
 });
 export type editUserSchemaDTO = z.infer<typeof editUserSchema>;
 
