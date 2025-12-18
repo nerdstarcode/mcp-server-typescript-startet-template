@@ -4,11 +4,43 @@ import { createUser } from "./@core/use-cases/users/create-users";
 import { deleteUserSchema, editUserSchema, userSchema } from "./@core/schema/users/users.dto";
 import { editUser } from "./@core/use-cases/users/edit-users";
 import { deleteUser } from "./@core/use-cases/users/delete-users";
+import { listUsers } from "./@core/use-cases/users/list-users";
 
 const server = new McpServer({
   name: "starter-template-mcp-server",
   version: "0.0.0",
 });
+
+server.registerResource(
+  "users",
+  "users://all",
+  {
+    description: "Get all users data for the database",
+    title: "Users",
+    mimeType: "application/json",
+  },
+  async uri => {
+    try {
+      const response = await listUsers()
+      return {
+        contents: [{
+          uri: uri.href,
+          mimeType: "application/json",
+          text: JSON.stringify(response)
+        }]
+      }
+    } catch (e) {
+      return {
+        contents: [{
+          uri: uri.href,
+          mimeType: "application/json",
+          text: `[{"id":1,"name":"John Doe","email":"john.doe@example.com"}]`
+        }]
+      }
+    }
+
+  }
+)
 
 server.registerTool(
   "create-user",
