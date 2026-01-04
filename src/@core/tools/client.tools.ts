@@ -1,8 +1,8 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { deleteUserSchema, editUserSchema, userSchema } from "../schema/users/users.dto";
-import { createUser } from "../use-cases/users/create-users";
-import { editUser } from "../use-cases/users/edit-users";
-import { deleteUser } from "../use-cases/users/delete-users";
+import { deleteUserSchema, editUserSchema, userSchema } from "../schema/users/users.dto.js";
+import { createUser } from "../use-cases/users/create-users.js";
+import { editUser } from "../use-cases/users/edit-users.js";
+import { deleteUser } from "../use-cases/users/delete-users.js";
 
 export function registerClientTools(server: McpServer) {
   server.registerTool(
@@ -91,7 +91,7 @@ export function registerClientTools(server: McpServer) {
         openWorldHint: true
       }
     },
-    async (payload) => {
+    async (payload: any) => {
       try {
         const res = await deleteUser(payload);
         return { content: [{ type: "text", text: `User ${res.id} deleted successfully` }] };
